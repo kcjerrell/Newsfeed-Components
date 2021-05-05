@@ -4,6 +4,8 @@
 
 import articleData from "./ArticleData";
 
+import { makeElement } from "./Helpers";
+
 const extraArt = {
   title: "Lorem Ipsum Article",
   date: "May 5th, 2021",
@@ -18,7 +20,16 @@ const extraArt = {
     + "venenatis cras.Nisl rhoncus mattis rhoncus urna neque viverra justo nec ultrices.Venenatis cras sed felis eget velit."
 };
 
+const anotherArt = {
+  title: 'Na Na Na Na',
+  date: 'May 5th, 2021',
+  firstParagraph: 'Na Na Na Na Na Na Na Na Na. Na Na Na Na Na. Na Na Na Na Na Na Na Na Na Na Na. Na Na Na Na Na Na Na Na Na Na Na. Na Na Na Na.',
+  secondParagraph: 'Na Na Na Na Na Na Na Na Na. Na Na Na Na Na. Na Na Na Na Na Na Na Na Na Na Na. Na Na Na Na Na Na Na Na Na Na Na. Na Na Na Na.',
+  thirdParagraph: 'Na Na Na Na Na Na Na Na Na. Na Na Na Na Na. Na Na Na Na Na Na Na Na Na Na Na. Na Na Na Na Na Na Na Na Na Na Na. Na Na Na Na.',
+}
+
 articleData.push(extraArt);
+articleData.push(anotherArt);
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
@@ -73,19 +84,7 @@ function articleMaker({ title, date, firstParagraph, secondParagraph, thirdParag
   return articleElement;
 }
 
-function makeElement(element, { text, style }) {
-  const e = document.createElement(element);
-
-  if (text !== undefined)
-    e.textContent = text;
-
-  if (style !== undefined)
-    e.classList.add(style);
-
-  return e;
-}
-
 articleData.forEach(a => {
   const element = articleMaker(a);
   document.querySelector('div.articles').appendChild(element);
-})
+});
